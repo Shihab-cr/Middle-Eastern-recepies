@@ -1,0 +1,80 @@
+{
+    "data":[
+        {
+            "id": 1,
+            "name": "Hummus",
+            "img": "../public/imgs/hummus.jpeg",
+            "description": "Creamy chickpea and tahini spread, brightened with lemon juice and olive oil.",
+            "servings":4,
+            "prepTime":"10 mins",
+            "cookTime": "0 mins",
+            "ingredients": ["1 can (400 g) chickpeas, drained" ,"2 tbsp tahini" ,"2 tbsp lemon juice", "1 clove garlic, minced" , "2 tbsp olive oil (+ extra for drizzling)" , "Salt to taste" , "Optional garnish: paprika, parsley"],
+            "instructions": ["Blend all ingredients until smooth.", "Drizzle olive oil on top and garnish."]
+        },
+        {
+            "id":2,
+            "name": "Baba Ghanoush",
+            "img":"../public/imgs/Baba-Ghanoush2.jpg",
+            "description":"Smoky roasted eggplant dip, rich with tahini, garlic, and lemon.",
+            "servings": 4,
+            "prepTime": "10 mins",
+            "cookTime": "20 mins",
+            "ingredients": ["1 large eggplant", "2 tbsp tahini", "1 garlic clove, minced", "1 tbsp lemon juice", "1 tbsp olive oil", "Salt to taste"],
+            "instructions": ["Roast or char eggplant until softened; peel and drain.", "Mash pulp and mix with remaining ingredients."]
+        },
+        {
+            "id":3,
+            "name": "Koshary",
+            "img": "../public/imgs/koshary.jpg",
+            "description":"Egypt’s comfort dish: layered lentils, rice, pasta, tomato sauce, chickpeas, and crispy onions.",
+            "servings": 4,
+            "prepTime": "10 mins",
+            "cookTime": "30 mins",
+            "ingredients": ["Rice optionally cooked with lentils", "cooked Brown lentils ", "Macaroni or small pasta like ditalini", "Tomato sauce", "cooked chickpeas", "fried onions", "Garlic–vinegar sauce (da’ah)", "Optional spicy chili sauce (shatta)"],
+            "instructions": ["Cook lentils until tender; in some versions, combine with rice in the same pot.","Cook pasta separately until al dente.","Prepare the tomato sauce by sautéing aromatics, then simmering tomatoes with spices and vinegar until thickened.","Fry onions (often coated in flour/cornstarch) until golden and crispy.","If using, prepare additional sauces like garlic-vinegar or shatta. ","Assemble: Layer lentils/rice, pasta, then top with chickpeas, tomato sauce, crispy onions, and drizzle with garlic-vinegar and/or shatta sauce."]
+        },
+        {
+            "id": 4,
+            "name": "Mujaddara",
+            "img": "../public/imgs/Mujadara.jpg",
+            "description": "Comforting Levantine dish of lentils and rice topped with caramelized onions.",
+            "servings": 4,
+            "prepTime": "10 mins",
+            "cookTime": "35mins",
+            "ingredients": ["1 cup lentils","1 cup rice", "2 onions", "Olive oil", "salt"],
+            "instructions": ["Cook lentils and rice separately.", "Sauté onions until golden.", "Combine rice and lentils; top with onions."]
+        },
+        {
+            "id": 5,
+            "name": "Tabbouleh",
+            "img": "../public/imgs/Tabbuleh.jpg",
+            "description": "A refreshing parsley, bulgur, tomato, and onion salad, dressed with lemon and olive oil.",
+            "servings":4,
+            "prepTime": "15 mins",
+            "cookTime":"0 mins",
+            "ingredients":["Finely chopped parsley", "Soaked bulgur", "Tomato", "onion", "optional mint", "Lemon juice", "olive oil", "salt"]
+        },
+        {
+            "id": 6,
+            "name": "Fattoush salad",
+            "img": "../public/imgs/fattoush-salad.jpg",
+            "description": "A classic Levantine salad known for its refreshing crunch, combining vegetables, herbs, and toasted pita with a zesty dressing made of lemon and olive oil.",
+            "servings": 4,
+            "prepTime": "15 mins",
+            "cookTime": "5 mins",
+            "ingredients": ["tomato", "cucumber", "radish","Olive oil", "lemon juice", "sumac", "salt","Toasted pita pieces","mint or parsley"],
+            "instructions": ["Toast the pita pieces until golden and crispy","Toss the vegetables and greens in a bowl.","Dress with olive oil, lemon juice, sumac, and salt, mixing gently.","Add pita just before serving to keep it from getting soggy. Serve immediately for the best texture and flavor."]
+        },
+        {
+            "id": 7,
+            "name": "Falafel",
+            "img": "../public/imgs/Falafel-square-1.jpg",
+            "description": "Crispy, deep-fried chickpea (or fava bean) balls—packed with herbs and spices.",
+            "servings": 4,
+            "prepTime": "20 mins",
+            "cookTime": "10 mins",
+            "ingredients":["Soaked chickpeas or fava beans", "parsley", "coriander (cilantro)","Garlic", "onion","cumin", "salt","Oil"],
+            "instructions":["Soak chickpeas/fava beans (ideally 12–24 hours, often with baking soda)","Blend with herbs, garlic, onion, and spices until finely ground—mixture should resemble coarse sand","Chill the mixture for at least an hour to help it hold shape during frying","Form into balls or patties, then deep-fry in hot oil (approx. 350–375 °F or 175–190 °C) until golden and crisp—approx. 3–5 mins","Drain on paper towels and serve hot, often with pita and tahini."]
+        }
+    ]
+}
