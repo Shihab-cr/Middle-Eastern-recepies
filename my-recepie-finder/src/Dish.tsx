@@ -25,6 +25,7 @@ type dishProps = {
     error: string | null,
     isLoading: boolean
 }
+const goTop = ()=>{scrollTo({top:0, behavior: "smooth"})};
 const Dish = ({data, error, isLoading}: dishProps) : JSX.Element => {
     return (
         <div className="recepies-grid">
@@ -54,7 +55,7 @@ const Dish = ({data, error, isLoading}: dishProps) : JSX.Element => {
                                         <p>Cook: {recepie.cookTime}</p>
                                     </div>
                                 </div>
-                                <Link to={`/recepies/${recepie.id}`}><button>View Recepie</button></Link>
+                                <Link to={`/recepies/${recepie.id}`}><button onClick={goTop}>View Recepie</button></Link>
                             </div>)
                         })}
                         {(!data || data.length===0) && <div className="not-found">This dish is currently not available</div>}

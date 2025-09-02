@@ -14,29 +14,29 @@ import { useNav } from "./NavContext";
 const Header = () => {
     const [isShowingNavs , setIsShowingNavs] = useState(false);
     const handleBurger = ()=>{
-        // setTimeout(()=>{
-        // },300)
+        
         setIsShowingNavs(!isShowingNavs);
     }
+    const goTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
     const {isHome,isAbout,isBrowsing} = useNav();
     return ( 
     <div className="Header">
         <div className="header-container">
             <h4 className="web-title">Middle<span>-</span>Eastern Recepies</h4>
             <nav className="navs">
-                <Link to="/" className={isHome? "current":"outside"}>Home</Link>
-                <Link to="/about" className={isAbout? "current":"outside"}>About</Link>
-                <Link to="/recepies" className={isBrowsing? "current":"outside"}>Recepies</Link>
+                <Link to="/" className={isHome? "current":"outside"} onClick={goTop}>Home</Link>
+                <Link to="/about" className={isAbout? "current":"outside"} onClick={goTop}>About</Link>
+                <Link to="/recepies" className={isBrowsing? "current":"outside"} onClick={goTop}>Recepies</Link>
             </nav>
-            <Link to="/recepies"><button>Browse recepies</button></Link>
+            <Link to="/recepies"><button onClick={goTop}>Browse recepies</button></Link>
             
-            <button onClick={handleBurger} className="burgerIcon"><FontAwesomeIcon icon={faBars} />
+            <button onClick={()=>{handleBurger(); goTop();}} className="burgerIcon"><FontAwesomeIcon icon={faBars} />
             </button>
             <div className="menu-border">
                 <div className={isShowingNavs? "drop-down-menu": "close-menu"}>
-                    <Link onClick={handleBurger} to="/" className={isHome? "current":"outside"}>Home</Link>
-                    <Link onClick={handleBurger} to="/about" className={isAbout? "current":"outside"}>About</Link>
-                    <Link onClick={handleBurger} to="/recepies" className={isBrowsing? "current":"outside"}>Recepies</Link>
+                    <Link onClick={()=>{handleBurger(); goTop();}} to="/" className={isHome? "current":"outside"}>Home</Link>
+                    <Link onClick={()=>{handleBurger(); goTop();}} to="/about" className={isAbout? "current":"outside"}>About</Link>
+                    <Link onClick={()=>{handleBurger(); goTop();}} to="/recepies" className={isBrowsing? "current":"outside"}>Recepies</Link>
                 </div>
             </div>
             <div className={isShowingNavs? "menu-shadow-show":"menu-shadow-hide"} onClick={handleBurger}/>

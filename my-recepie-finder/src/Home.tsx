@@ -15,6 +15,7 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
     const {setIsHome, setIsAbout, setIsBrowsing} = useNav();
+    const goTop = ()=>{window.scrollTo({top: 0 , behavior: "smooth"})};
     useEffect(()=>{
         setIsHome(true);
         setIsAbout(false);
@@ -26,7 +27,7 @@ const Home = () => {
                 <div className="title">
                     <h1><span>Middle<b id='dashes'>-</b>Eastern</span> Dishes<b id='dashes'>,</b> taste the real culture</h1>
                     <p>Where age-old recipes meet generations of expert craftsmanship, and the past meets the future</p>
-                    <Link to="/recepies"><button>Start exploring</button></Link>
+                    <Link to="/recepies"><button onClick={goTop}>Start exploring</button></Link>
                     <img src="../public/imgs/landing2.png" alt="Landing img"/>
                 </div>
                 <div className="what-you-get">
@@ -62,7 +63,7 @@ const Home = () => {
                 <Footer/>
             </div>
         </div>
-     );
+    );
 }
 
 export default Home;

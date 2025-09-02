@@ -818,6 +818,13 @@ button:hover{
   overflow: scroll;
   max-width: 200px;
 }
+@media(max-width: 767px){
+  .Recepies-Browser .recepies-container .controls{
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+}
 .Recepies-Browser .recepies-container .controls input:focus{
   border: none;
   outline: none;
@@ -904,19 +911,24 @@ button:hover{
 -
 - */
 .Recepie-Details{
-  padding-left: 12px;
-  padding-right: 12px;
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column; */
 }
 .Recepie-Details .details-container{
+  padding-right: 12px;
+  padding-left: 12px;
   max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
   padding-top: 70px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
 }
 .Recepie-Details .details-container .nested-path{
   display: flex;
+  flex-direction: row;
   font-family: "Nunito";
   gap: 6px;
   margin-bottom: 15px;
@@ -939,6 +951,13 @@ button:hover{
   gap: 40px;
   border-bottom: 1px solid var(--border-separator-color);
   padding-bottom: 40px;
+  margin-left: auto;
+  margin-bottom: auto;
+}
+@media(max-width: 767px){
+  .Recepie-Details .details-container .selected-recepie{
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
 }
 .Recepie-Details .details-container .selected-recepie .img-holder{
   max-height: 300px;
@@ -947,7 +966,7 @@ button:hover{
   box-shadow: 0px 3px 9px rgb(0 0 0 / 13%);
 }
 .Recepie-Details .details-container .selected-recepie img{
-  width: 100%;
+  max-width: 100%;
   border-radius: 15px;
 }
 .Recepie-Details .details-container .selected-recepie .description{
