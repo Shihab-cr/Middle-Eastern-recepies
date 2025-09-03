@@ -32,7 +32,7 @@ const RecepieDetails = () => {
         setIsBrowsing(false);
         setIsHome(false);
         setIsAbout(false);
-    })
+    },[]);
     const {id} = useParams();
     const {data: allRecepies, error, isLoading} = useFetch<Recepie[]>(url);
     const [myRecepie, setMyRecepie] = useState<Recepie | undefined>(undefined);
