@@ -52,7 +52,8 @@
             "servings":4,
             "prepTime": "15 mins",
             "cookTime":"0 mins",
-            "ingredients":["Finely chopped parsley", "Soaked bulgur", "Tomato", "onion", "optional mint", "Lemon juice", "olive oil", "salt"]
+            "ingredients":["Finely chopped parsley", "Soaked bulgur", "Tomato", "onion", "optional mint", "Lemon juice", "olive oil", "salt"],
+            "instructions": [ "Combine all and serve chilled"]
         },
         {
             "id": 6,

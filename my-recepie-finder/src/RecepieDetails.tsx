@@ -46,7 +46,10 @@ const RecepieDetails = () => {
     }
     const AssignRecomendations = ()=>{
         let temp : Recepie[] | undefined= allRecepies.filter((recepie:Recepie)=>{
+            if(myRecepie)
             return recepie.prepTime.trim().toLowerCase().includes(myRecepie?.prepTime.trim().toLocaleLowerCase());
+            else
+                return undefined;
         })
         if(temp){
             temp =temp.filter((res: Recepie)=>{
