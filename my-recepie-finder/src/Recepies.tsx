@@ -27,23 +27,37 @@ const Recepies = ()=>{
         refetch();
     },[]);
 
+        const recipesList: Recepie[] = (() => {
+    if (!data) return []; // nothing yet
+    if (Array.isArray(data)) return data as Recepie[];
+    // handle common wrappers like { recepies: [...] } or { data: [...] }
+    const maybeObj = data as { recepies?: Recepie[]; data?: Recepie[] } | null;
+    if (maybeObj?.recepies && Array.isArray(maybeObj.recepies)) return maybeObj.recepies;
+    if (maybeObj?.data && Array.isArray(maybeObj.data)) return maybeObj.data;
+    return []; // fallback
+    })();
+
     const [prepTimeFilter, setPrepTimeFilter] = useState("");
     const [cookTimeFilter, setCookTimeFilter] = useState("");
     const [searchInput, setSearchInput] = useState("");
 
-    const [searchResult, setSearchResult] = useState<Recepie[]>(data);
-    const [displayResult, setDisplayResult] = useState<Recepie[]>(searchResult);
+    const [searchResult, setSearchResult] = useState<Recepie[]>([]);
+    const [displayResult, setDisplayResult] = useState<Recepie[]>([]);
 
     const handleSearch = ()=>{
-        if(searchInput !== ""){
-            const temp1 = data.filter((res)=>{
-                return( res.ingredients.join().trim().toLowerCase().includes(searchInput.trim().toLowerCase()) || res.name.toLowerCase().trim().includes(searchInput.trim().toLowerCase()));
-            })
-            setSearchResult(temp1);
-        }
-        else{
-            setSearchResult(data);
-        } 
+        
+    if(searchInput !== ""){
+        const temp1 = recipesList.filter((res)=>{
+        return (
+            res.ingredients.join().trim().toLowerCase().includes(searchInput.trim().toLowerCase()) ||
+            res.name.toLowerCase().trim().includes(searchInput.trim().toLowerCase())
+        );
+        });
+        setSearchResult(temp1);
+    } else {
+        setSearchResult(recipesList);
+    }
+
     }
     const handleFilters = ()=>{
         if(prepTimeFilter !== "" && cookTimeFilter === ""){
@@ -70,15 +84,17 @@ const Recepies = ()=>{
         
     }
     useEffect(()=>{
-        setDisplayResult(data);
-        setSearchResult(data);
-    },[data])
+        setDisplayResult(recipesList);
+        setSearchResult(recipesList);
+    },[recipesList]);
+
     useEffect(()=>{
         handleSearch();
-    },[searchInput, data, prepTimeFilter, cookTimeFilter]);
+    }, [searchInput, recipesList]);
     useEffect(()=>{
         handleFilters();
-    },[searchResult, prepTimeFilter, cookTimeFilter])
+    }, [searchResult, prepTimeFilter, cookTimeFilter]);
+
     return(
         <div className="Recepies-Browser">
             <div className="recepies-container">
@@ -90,19 +106,20 @@ const Recepies = ()=>{
                     <div className="filters">
                         <select onChange={(e)=>{setPrepTimeFilter(e.target.value)}}>
                             <option value={""}>Max Prep Time</option>
-                            <option value={"5 mins"}   onClick={()=>setPrepTimeFilter("5 mins")}>5 mins</option>
-                            <option value={"10 mins"}  onClick={()=>setPrepTimeFilter("10 mins")}>10 mins</option>
-                            <option value={"15 mins"}  onClick={()=>setPrepTimeFilter("15 mins")}>15 mins</option>
-                            <option value={"20 mins"}  onClick={()=>setPrepTimeFilter("20 mins")}>20 mins</option>
-                            <option value={"25 mins"}  onClick={()=>setPrepTimeFilter("25 mins")}>25 mins</option>
+                            <option value={"5 mins"}>5 mins</option>
+                            <option value={"10 mins"}>10 mins</option>
+                            <option value={"15 mins"}>15 mins</option>
+                            <option value={"20 mins"}>20 mins</option>
+                            <option value={"25 mins"}>25 mins</option>
                         </select>
+
                         <select onChange={(e)=>{setCookTimeFilter(e.target.value)}}>
                             <option value={""}>Max Cook Time</option>
-                            <option value={"5 mins"}   onClick={()=>{setCookTimeFilter("5 mins"); console.log(cookTimeFilter)}}>5 mins</option>
-                            <option value={"10 mins"}  onClick={()=>setCookTimeFilter("10 mins")}>10 mins</option>
-                            <option value={"15 mins"}  onClick={()=>setCookTimeFilter("15 mins")}>15 mins</option>
-                            <option value={"20 mins"}  onClick={()=>setCookTimeFilter("20 mins")}>20 mins</option>
-                            <option value={"25 mins"}  onClick={()=>setCookTimeFilter("25 mins")}>25 mins</option>
+                            <option value={"5 mins"}>5 mins</option>
+                            <option value={"10 mins"}>10 mins</option>
+                            <option value={"15 mins"}>15 mins</option>
+                            <option value={"20 mins"}>20 mins</option>
+                            <option value={"25 mins"}>25 mins</option>
                         </select>
                     </div>
                     <input type="text" placeholder={"Search by name or ingredients"} value={searchInput} onChange={(e)=>setSearchInput(e.target.value)}></input>

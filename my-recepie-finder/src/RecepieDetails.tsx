@@ -15,7 +15,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Dish from "./Dish";
 
 const RecepieDetails = () => {
-    const url: string = "/db.json";
+    // const url: string = "/db.json";
     type Recepie ={
         name: string,
         id: number | string,
@@ -34,31 +34,48 @@ const RecepieDetails = () => {
         setIsAbout(false);
     },[]);
     const {id} = useParams();
-    const {data: allRecepies, error, isLoading} = useFetch<Recepie[]>(url);
+    const {data: allRecepies, error, isLoading} = useFetch<{ recepies: Recepie[] }>("/db.json");
     const [myRecepie, setMyRecepie] = useState<Recepie | undefined>(undefined);
-    const [recomendations, setRecomendations] = useState<Recepie[]>(allRecepies);
+    const [recomendations, setRecomendations] = useState<Recepie[]>([]);
 
+const recipesList: Recepie[] = (() => {
+    if (!allRecepies) return [];                       // nothing loaded yet
+    if (Array.isArray(allRecepies)) return allRecepies as Recepie[]; // already an array
+
+    // treat allRecepies as a plain object that *may* have `.recepies` or `.data`
+    const maybeObj = allRecepies as { recepies?: Recepie[]; data?: Recepie[] } | null;
+
+    if (maybeObj && maybeObj.recepies && Array.isArray(maybeObj.recepies)) {
+        return maybeObj.recepies;
+    }
+    if (maybeObj && maybeObj.data && Array.isArray(maybeObj.data)) {
+        return maybeObj.data;
+    }
+
+  return []; // fallback
+})();
     const AssignMyRecepie = ()=>{
-        return allRecepies?.find((res)=>{
-            return res.id.toString() === id;
-        });
-        
+        return recipesList.find((res)=>{
+            return String(res.id) === String(id);
+        })
     }
     const AssignRecomendations = ()=>{
-        let temp : Recepie[] | undefined= allRecepies.filter((recepie:Recepie)=>{
-            if(myRecepie)
-            return recepie.prepTime.trim().toLowerCase().includes(myRecepie?.prepTime.trim().toLocaleLowerCase());
-            else
-                return undefined;
-        })
-        if(temp){
-            temp =temp.filter((res: Recepie)=>{
-                return res.id.toString() !== id;
-            })
-            setRecomendations(temp);
-        }
-        else{
-            setRecomendations([]);
+        let temp: Recepie[] = [];
+
+        if (myRecepie) {
+        temp = recipesList.filter((recepie: Recepie)=>{
+            // return boolean (do not return undefined)
+            return recepie.prepTime.trim().toLowerCase()
+            .includes(myRecepie.prepTime.trim().toLowerCase());
+        });
+
+        // remove the current recipe from recommendations
+        temp = temp.filter((res: Recepie) => String(res.id) !== String(id));
+
+        setRecomendations(temp);
+        } else {
+        // no myRecepie yet — clear recommendations
+        setRecomendations([]);
         }
     }
     useEffect(()=>{
@@ -100,19 +117,15 @@ const RecepieDetails = () => {
                             <div className="ingrediants-instructions">
                                 <h2>Ingredients</h2>
                                 <ul>
-                                    {
-                                        myRecepie.ingredients.map((item: string, index: number)=>{
-                                            return <li key={index}><p>{item}</p></li>
-                                        })
-                                    }
+                                    {(myRecepie?.ingredients ?? []).map((item: string, index: number)=>{
+                                        return <li key={index}><p>{item}</p></li>
+                                    })}
                                 </ul>
                                 <h2>Instructions</h2>
                                 <ul>
-                                    {
-                                        myRecepie.instructions.map((item:string, index: number)=>{
-                                            return <li key={index}><p>{item}</p></li>
-                                        })
-                                    }
+                                    {(myRecepie?.instructions ?? []).map((item:string, index: number)=>{
+                                        return <li key={index}><p>{item}</p></li>
+                                    })}
                                 </ul>
                             </div>
                         </div>
