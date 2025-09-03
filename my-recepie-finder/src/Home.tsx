@@ -28,7 +28,7 @@ const Home = () => {
                     <h1><span>Middle<b id='dashes'>-</b>Eastern</span> Dishes<b id='dashes'>,</b> taste the real culture</h1>
                     <p>Where age-old recipes meet generations of expert craftsmanship, and the past meets the future</p>
                     <Link to="/recepies"><button onClick={goTop}>Start exploring</button></Link>
-                    <img src="../public/imgs/landing2.png" alt="Landing img"/>
+                    <img src="/imgs/landing2.png" alt="Landing img"/>
                 </div>
                 <div className="what-you-get">
                     <h2>What you<span>'</span>ll get</h2>
@@ -57,7 +57,7 @@ const Home = () => {
                         <p>Cooking is an art. And art requires balance and control to achieve <span>mastery</span>, these recepies are written with details from real food masters. Each dish has its own story</p>
                         <p>Whether you are new to the kitchen or just need a new taste in your life, we've got you covered</p>
                     </div>
-                    <img src="../public/imgs/landing1.jpg" alt="landing img"/>
+                    <img src="/imgs/landing1.jpg" alt="landing img"/>
                 </div>
                 <MyAction/>
                 <Footer/>

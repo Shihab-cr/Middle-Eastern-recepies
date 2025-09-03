@@ -20,7 +20,7 @@ const About = () => {
                         <p>Healthy Recipe Finder was created to prove that healthy eating can be convenient, affordable, and genuinely delicious.</p>
                         <p>We showcase quick, whole-food dishes that anyone can master—no fancy equipment, no ultra-processed shortcuts—just honest ingredients and straightforward steps.</p>
                     </div>
-                    <img src="../public/imgs/landing3.png" alt="Landing image"/>
+                    <img src="/imgs/landing3.png" alt="Landing image"/>
                 </div>
                 <div className='sections'>
                     <h1>Why we exist</h1>
@@ -78,7 +78,7 @@ const About = () => {
                             <li>Spark curiosity about seasonal produce and local agriculture.</li>
                         </ul>
                     </div>
-                    <img src="../public/imgs/landing4.jpg" alt="Landing image"/>
+                    <img src="/imgs/landing4.jpg" alt="Landing image"/>
                 </div>
                 <MyAction/>
                 <Footer/>
