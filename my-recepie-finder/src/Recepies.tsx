@@ -18,7 +18,7 @@ const Recepies = ()=>{
         ingredients: string[],
         instructions: string[]
     };
-    const {data, error, isLoading, refetch} = useFetch<Recepie[]>("http://localhost:8000/data");
+    const {data, error, isLoading, refetch} = useFetch<Recepie[]>("/db.json");
     const { setIsHome, setIsAbout, setIsBrowsing} = useNav();
     useEffect(()=>{
         setIsHome(false);

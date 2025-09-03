@@ -15,7 +15,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Dish from "./Dish";
 
 const RecepieDetails = () => {
-    const url: string = "http://localhost:8000/data";
+    const url: string = "/db.json";
     type Recepie ={
         name: string,
         id: number | string,
