@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { Route, Routes, HashRouter } from "react-router-dom"
 import Header from "./Header"
 import Home from "./Home"
 import NavProvider from "./NavContext"
@@ -9,7 +9,7 @@ function App() {
   
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <NavProvider>
         <Header />
         <Routes>
@@ -19,7 +19,7 @@ function App() {
           <Route path="/recepies/:id" element={<RecepieDetails/>}/>
         </Routes>
       </NavProvider>
-    </BrowserRouter>
+    </HashRouter>
 
   )
 }
