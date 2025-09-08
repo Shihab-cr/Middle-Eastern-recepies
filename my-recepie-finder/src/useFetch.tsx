@@ -24,7 +24,7 @@ function useFetch<T> (url: string,)  {
             setError(err.message);
             setIsLoading(false);
         })
-    }, [url])
+    }, [])
     useEffect(()=>{
         refetch();
     },[refetch, url])
